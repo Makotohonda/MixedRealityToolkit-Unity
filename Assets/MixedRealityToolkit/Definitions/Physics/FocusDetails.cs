@@ -1,11 +1,23 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
+using Microsoft.MixedReality.Toolkit.Input;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace Microsoft.MixedReality.Toolkit.Physics
 {
+    /// <summary>
+    /// Configuration for a focus session, i.e. the time span between FocusEnter and FocusExit.
+    /// </summary>
+    public class FocusSessionConfiguration
+    {
+        /// <summary>
+        /// Specifies whether the pointer's target position (cursor) is locked as well when focus is locked.
+        /// </summary>
+        public bool IsTargetPositionLockedOnFocusLock { get; set; }
+    }
+
     /// <summary>
     /// Contains information about which game object has the focus currently.
     /// Also contains information about the normal of that point.
@@ -41,6 +53,12 @@ namespace Microsoft.MixedReality.Toolkit.Physics
         /// The last raycast hit info for graphic raycast
         /// </summary>
         public RaycastResult LastGraphicsRaycastResult { get; set; }
+
+        /// <summary>
+        /// The configuration of the current focus session. Modify to change focus behavior.
+        /// </summary>
+        public FocusSessionConfiguration SessionConfiguration { get; set; }
+
         public Vector3 PointLocalSpace { get; set; }
         public Vector3 NormalLocalSpace { get; set; }
     }
